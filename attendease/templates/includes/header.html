@@ -1,0 +1,36 @@
+<div class="header">
+
+   <a href="javascript:void(0);" id="toggle_btn">
+   <i class="fas fa-align-left"></i>
+   </a>
+   <div class="top-nav-search mt-3">
+      <h4><strong>Welcome</strong>&nbsp;<span>{{user.first_name}} {{ user.last_name }}</span>&nbsp;!</h4>
+   </div>
+   <a class="mobile_btn" id="mobile_btn">
+   <i class="fas fa-bars"></i>
+   </a>
+   <ul class="nav user-menu">
+      <li class="nav-item dropdown has-arrow">
+         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <span class="user-img">&nbsp;{{user.first_name}}&nbsp;{{user.last_name}}</span>
+         </a>
+         <div class="dropdown-menu">
+
+               <div class="user-text mt-3 mb-3 ml-2">
+                  <h6>&nbsp;{{user.first_name}}&nbsp;{{user.last_name}}</h6>
+                           {% if user.user_type == '1' %}
+                           <p class="text-muted mb-0">&nbsp;Head Of Department</p>
+                           {% elif user.user_type == '2' %}
+                           <p class="text-muted mb-0">&nbsp;Coordinator</p>
+                           {% elif user.user_type == '3' %}
+                           <p class="text-muted mb-0">&nbsp;Faculty</p>
+                           {% else %}
+                           <p class="text-muted mb-0">&nbsp;Student</p>
+                           {% endif %}
+            </div>
+            <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+            <a class="dropdown-item" href="{% url 'doLogout' %}">Logout</a>
+         </div>
+      </li>
+   </ul>
+</div>

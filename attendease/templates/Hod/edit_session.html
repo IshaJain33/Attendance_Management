@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+   <div class="col-sm-12">
+      <div class="card">
+         <div class="card-body">
+            <form method="post" action="{% url 'update_session' %}" >
+               {% csrf_token %}
+               <div class="col-12">
+                  <h5 class="form-title"><span>Edit Session</span></h5>
+               </div>
+               {% include 'includes/messages.html' %}
+               <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Session year start</label>
+                                       <div>
+                                          <input type="date" class="form-control" name="session_year_start" value="{{session_year.session_year_start}}" required>
+                                       </div>
+                                        <input type="text" class="form-control" name="session_year_id" value="{{session_year.id}}" hidden>
+                                    </div>
+                                 </div>
+<div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                       <label>Session year end</label>
+                                       <div>
+                                          <input type="date" class="form-control" name="session_year_end" value="{{session_year.session_year_end}}" required>
+                                       </div>
+                                    </div>
+                                 </div>
+               <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Update Session</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card">
+                        <div class="card-body">
+                           <form method="post" action="{% url 'update_student' %}" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                 <div class="col-12">
+                                    <h5 class="form-title"><span>Edit Student</span></h5>
+                                 </div>
+
+                                 {% include 'includes/messages.html' %}
+
+ <div class="col-sm-11">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="student_id" value="{% for i in student %}{{i.admin.id}}{% endfor %}" hidden>
+                                    </div>
+                                 </div>
+                               <div class="col-sm-11">
+               <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" name="first_name" value="{% for i in student %}{{i.admin.first_name}}{% endfor %}" required>
+               </div>
+            </div>
+            <div class="col-sm-11">
+               <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" name="last_name" value="{% for i in student %}{{i.admin.last_name}}{% endfor %}" required>
+               </div>
+            </div>
+            <div class="col-sm-11">
+               <div class="form-group">
+                  <label>Email</label>
+                  <input type="text" class="form-control" name="email" value="{% for i in student %}{{i.admin.email}}{% endfor %}"  required>
+               </div>
+            </div>
+            <div class="col-sm-11">
+               <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control" name="username" value="{% for i in student %}{{i.admin.username}}{% endfor %}"  required>
+               </div>
+            </div>
+             <div class="col-sm-11">
+                  <div class="form-group">
+                     <label>Password</label>
+                     <input type="password" class="form-control" name="password" required placeholder="Fill only if you want to change Password." >
+                  </div>
+               </div>
+                               <div class="col-sm-11">
+                  <label>Gender</label>
+                  <select class="form-control" name="gender" required >
+                     <option>Select Course</option>
+                     <option value="Female">Female</option>
+                     <option value="Male">Male</option>
+                     <option value="Others">Others</option>
+                  </select>
+               </div>
+               <div class="col-sm-11">
+                  <label>Course</label>
+                  <select class="form-control" name="course_id" required >
+                     <option>Select Course</option>
+                     {% for i in course %}
+                     <option value="{{i.id}}">{{i.name}}</option>
+                     {% endfor %}
+                  </select>
+               </div>
+               <br>
+            <div class="col-sm-11">
+                  <label>Department</label>
+                  <select class="form-control" name="department_id" required>
+                     <option>Select Department</option>
+                    {% for i in department %}
+                     <option value="{{i.id}}">{{i.department_name}}</option>
+                     {% endfor %}
+                  </select>
+               </div>
+            <br>
+               <div class="col-sm-11">
+                  <label>Branch</label>
+                  <select class="form-control" name="branch_id" required>
+                     <option>Select Branch</option>
+                     {% for i in branch %}
+                     <option value="{{i.id}}">{{i.name}}</option>
+                     {% endfor %}
+                  </select>
+               </div>
+            <br>
+               <div class="col-sm-11">
+                  <label>Session Year</label>
+                  <select class="form-control" name="session_year_id" required>
+                     <option>Select Session Year</option>
+                     {% for i in session_year %}
+                     <option value="{{i.id}}">{{i.session_year_start}} to {{i.session_year_end}}</option>
+                     {% endfor %}
+                  </select>
+               </div><br>
+            <div class="col-sm-11">
+               <div class="form-group">
+                  <label>Enrolment No.</label>
+                  <input type="text" class="form-control" name="enrolment_no" required>
+               </div>
+            </div>
+                               <br>
+                                 <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Update Student</button>
+                                 </div>
+
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+{% endblock %}

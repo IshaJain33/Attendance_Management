@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card">
+                        <div class="card-body">
+                           <form method="post" action="{% url 'update_faculty' %}" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                 <div class="col-12">
+                                    <h5 class="form-title"><span>Edit Faculty</span></h5>
+                                 </div>
+
+                                 {% include 'includes/messages.html' %}
+
+ <div class="col-sm-11">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="faculty_id" value="{% for i in faculty %}{{i.admin.id}}{% endfor %}" hidden>
+                                    </div>
+                                 </div>
+                               <div class="col-sm-11">
+               <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" name="first_name" value="{% for i in faculty %}{{i.admin.first_name}}{% endfor %}" required>
+               </div>
+            </div>
+            <div class="col-sm-11">
+               <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" name="last_name" value="{% for i in faculty %}{{i.admin.last_name}}{% endfor %}" required>
+               </div>
+            </div>
+            <div class="col-sm-11">
+               <div class="form-group">
+                  <label>Email</label>
+                  <input type="text" class="form-control" name="email" value="{% for i in faculty %}{{i.admin.email}}{% endfor %}"  required>
+               </div>
+            </div>
+            <div class="col-sm-11">
+               <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control" name="username" value="{% for i in faculty %}{{i.admin.username}}{% endfor %}"  required>
+               </div>
+            </div>
+             <div class="col-sm-11">
+                  <div class="form-group">
+                     <label>Password</label>
+                     <input type="password" class="form-control" name="password" required placeholder="Fill only if you want to change Password." >
+                  </div>
+               </div>
+               <div class="col-sm-11">
+                  <label>Course</label>
+                  <select class="form-control" name="course_id" required >
+                     <option>Select Course</option>
+                     {% for i in course %}
+                     <option value="{{i.id}}">{{i.name}}</option>
+                     {% endfor %}
+                  </select>
+               </div>
+               <br>
+            <div class="col-sm-11">
+                  <label>Department</label>
+                  <select class="form-control" name="department_id" required>
+                     <option>Select Department</option>
+                    {% for i in department %}
+                     <option value="{{i.id}}">{{i.department_name}}</option>
+                     {% endfor %}
+                  </select>
+               </div>
+                               <br>
+                                 <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Update Student</button>
+                                 </div>
+
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+{% endblock %}
