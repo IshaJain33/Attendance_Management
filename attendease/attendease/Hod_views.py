@@ -4,8 +4,6 @@ from app.models import Course,Branch,Faculty,Coordinator,Department,Student,Sess
 from app.models import CustomUser
 from django.contrib import messages
 
-
-
 @login_required(login_url='/')
 def HOME(request):
     student_count = Student.objects.all().count()
